@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>阿拉善盟市场监督管理局 - 2025年度企业年报倒计时宣传海报</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+            padding: 24px;
+        }
+
+        /* 主海报容器 - 模拟A4竖版/宣传海报风格 */
+        .poster {
+            max-width: 880px;
+            width: 100%;
+            background: linear-gradient(145deg, #ffffff 0%, #fefefe 100%);
+            border-radius: 48px 48px 48px 32px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            position: relative;
+            backdrop-filter: blur(0px);
+        }
+
+        /* 装饰性地域元素：沙漠曲线 & 骆驼剪影（低调彰显阿拉善特色） */
+        .poster::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 140px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,64L48,58.7C96,53,192,43,288,48C384,53,480,75,576,80C672,85,768,75,864,69.3C960,64,1056,64,1104,64L1152,64L1152,120L1104,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" fill="%23F4E9D8" opacity="0.5"/></svg>') repeat-x;
+            background-size: 300px;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .poster::after {
+            content: "🐫";
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 58px;
+            opacity: 0.12;
+            pointer-events: none;
+            font-family: monospace;
+            transform: scaleX(-1);
+        }
+
+        /* 主内容区，让内容在装饰之上 */
+        .poster-content {
+            position: relative;
+            z-index: 2;
+            padding: 32px 36px 42px 36px;
+        }
+
+        /* 头部：监管局标识与名称 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #cc7b2c;
+            padding-bottom: 18px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .badge-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .emblem {
+            background: #1e3a5f;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffd966;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .agency-name h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+        .agency-name p {
+            font-size: 0.75rem;
+            color: #6c757d;
+            letter-spacing: 1px;
+        }
+        .year-badge {
+            background: #cc7b2c20;
+            padding: 6px 16px;
+            border-radius: 40px;
+            border-left: 4px solid #cc7b2c;
+        }
+        .year-badge span {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #b45f1b;
+        }
+
+        /* 主标题 */
+        .main-title {
+            text-align: center;
+            margin: 16px 0 12px 0;
+        }
+        .main-title h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e3a5f, #cc7b2c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+        }
+        .main-title .sub {
+            font-size: 0.9rem;
+            color: #5a626e;
+            margin-top: 8px;
+            border-top: 1px dashed #e0c8a8;
+            display: inline-block;
+            padding-top: 6px;
+        }
+
+        /* 倒计时核心区域 */
+        .countdown-area {
+            background: linear-gradient(125deg, #fff5e8, #fffbf2);
+            border-radius: 56px;
+            padding: 28px 20px 28px 20px;
+            margin: 24px 0 30px 0;
+            text-align: center;
+            box-shadow: 0 12px 18px -8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+            border: 1px solid #ffdfb8;
+        }
+        .countdown-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #b45f1b;
+            letter-spacing: 2px;
+            background: #fff0e0;
+            display: inline-block;
+            padding: 4px 18px;
+            border-radius: 40px;
+        }
+        .countdown-number {
+            font-size: 5.8rem;
+            font-weight: 900;
+            margin: 12px 0 8px;
+            line-height: 1;
+            color: #c0392b;
+            text-shadow: 2px 2px 8px rgba(192,57,43,0.2);
+            letter-spacing: 8px;
+        }
+        .countdown-unit {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #a05e2c;
+            margin-left: 4px;
+        }
+        .deadline-info {
+            font-size: 1rem;
+            color: #2c3e4e;
+            background: #ffffffcc;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+            backdrop-filter: blur(2px);
+        }
+        .warning-text {
+            font-size: 0.85rem;
+            margin-top: 16px;
+            background: #c0392b10;
+            border-radius: 28px;
+            padding: 6px 12px;
+            color: #b34e3a;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* 年报信息模块 */
+        .info-grid {
+            background: #f8fafc;
+            border-radius: 32px;
+            padding: 24px 28px;
+            margin: 28px 0 24px 0;
+            border-left: 6px solid #cc7b2c;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .info-item {
+            margin-bottom: 22px;
+        }
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+        .info-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #cc7b2c;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .info-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            word-break: break-all;
+        }
+        .info-value a {
+            text-decoration: none;
+            color: #1e3a5f;
+            border-bottom: 2px solid #cc7b2c;
+            transition: 0.2s;
+        }
+        .info-value a:hover {
+            color: #b45f1b;
+            border-bottom-color: #b45f1b;
+        }
+        .website-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: #eef2fa;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+        }
+        .small-note {
+            font-size: 0.8rem;
+            color: #5f6c7a;
+            margin-top: 8px;
+        }
+
+        /* 警示 + 提醒 */
+        .legal-reminder {
+            background: #fdf7f0;
+            border-radius: 24px;
+            padding: 18px 22px;
+            margin: 20px 0 16px;
+            font-size: 0.85rem;
+            border: 1px solid #ffe1b3;
+            color: #5a4a2e;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .reminder-icon {
+            font-size: 1.8rem;
+        }
+        .reminder-text {
+            flex: 2;
+            font-weight: 500;
+        }
+        .hotline {
+            background: #cc7b2c;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* 底部权威声明 */
+        .footer {
+            margin-top: 28px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            font-size: 0.7rem;
+            color: #6c7a89;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer .official {
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+        .action-btn {
+            background: #1e3a5f;
+            padding: 8px 24px;
+            border-radius: 40px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.2s;
+            display: inline-block;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .action-btn:hover {
+            background: #cc7b2c;
+            transform: translateY(-2px);
+        }
+
+        /* 响应式 手机布局 */
+        @media (max-width: 650px) {
+            .poster-content {
+                padding: 20px 20px 32px;
+            }
+            .countdown-number {
+                font-size: 4rem;
+                letter-spacing: 4px;
+            }
+            .info-value {
+                font-size: 1rem;
+            }
+            .main-title h1 {
+                font-size: 1.8rem;
+            }
+            .agency-name h2 {
+                font-size: 1rem;
+            }
+            .header {
+                flex-direction: column;
+                align-items: start;
+                gap: 12px;
+            }
+            .year-badge {
+                align-self: flex-start;
+            }
+            .legal-reminder {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="poster">
+    <div class="poster-content">
+        <!-- 头部局徽 + 阿拉善盟市场监管局 -->
+        <div class="header">
+            <div class="badge-area">
+                <div class="emblem">🛡️</div>
+                <div class="agency-name">
+                    <h2>阿拉善盟市场监督管理局</h2>
+                    <p>Alxa Market Regulation Administration</p>
+                </div>
+            </div>
+            <div class="year-badge">
+                <span>2025 年度</span>
+            </div>
+        </div>
+
+        <!-- 主标题 -->
+        <div class="main-title">
+            <h1>企业年报 · 信用公示</h1>
+            <div class="sub">依法年报 诚信经营 积累信用资本</div>
+        </div>
+
+        <!-- 核心倒计时模块 -->
+        <div class="countdown-area">
+            <div class="countdown-label">⏳ 年报截止倒计时 ⏳</div>
+            <div class="countdown-number" id="countdownDays">--</div>
+            <div class="deadline-info">
+                📅 截止日期：<strong>2026年6月30日</strong>
+                <span class="countdown-unit">天</span>
+            </div>
+            <div class="warning-text">⚠️ 逾期未报将列入经营异常名录，影响企业信用</div>
+        </div>
+
+        <!-- 年报基本信息 满足时间+网址+网页名称 -->
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">📆 年报公示时间</div>
+                <div class="info-value">2026年1月1日  ——  2026年6月30日</div>
+                <div class="small-note">*报送公示2025年度市场主体年度报告，请务必在此期间完成。</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">🌐 官方年报系统（网页名称）</div>
+                <div class="info-value">
+                    <span class="website-name">国家企业信用信息公示系统</span>
+                </div>
+                <div class="small-note">市场主体唯一官方年报平台</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">🔗 年报登录网址</div>
+                <div class="info-value">
+                    <a href="https://amr.nmg.gov.cn/aiceps/#/login/index" target="_blank" rel="noopener noreferrer">www.gsxt.gov.cn</a>
+                </div>
+                <div class="small-note">点击访问或复制到浏览器 → 选择“企业信息填报”</div>
+            </div>
+        </div>
+
+        <!-- 重要提醒 + 阿拉善特色服务 -->
+        <div class="legal-reminder">
+            <div class="reminder-icon">📢</div>
+            <div class="reminder-text">
+                <strong>【阿拉善盟市场监管局特别提示】</strong><br>
+                年报全程免费，谨防诈骗！个体工商户、企业、农民专业合作社均需年报。未按时年报面临最高1万元罚款及信用惩戒。
+            </div>
+            <div class="hotline">☎ 咨询热线：0483-8333860</div>
+        </div>
+
+        <!-- 年报操作便捷按钮 + 官方footer -->
+        <div class="footer">
+            <div class="official">© 阿拉善盟市场监督管理局 宣</div>
+            <a href="https://www.gsxt.gov.cn" target="_blank" class="action-btn">📝 立即填报年报 →</a>
+            <div>信用修复 | 公示系统指南</div>
+        </div>
+
+        <!-- 附注：年报倒计时脚本截止2026年6月30日 23:59:59 动态计算 -->
+    </div>
+</div>
+
+<script>
+    (function() {
+        // 设定年报截止日期：2026年6月30日 23:59:59
+        const deadline = new Date(2026, 5, 30, 23, 59, 59, 999); // 月份6月实际js中5代表六月
+        const countdownElement = document.getElementById('countdownDays');
+
+        function updateCountdown() {
+            const now = new Date();
+            const diffMs = deadline - now;
+            
+            if (diffMs <= 0) {
+                // 年报已截止
+                countdownElement.innerHTML = "0";
+                // 可额外显示提示，但海报风格保留临界提醒
+                const warningDiv = document.querySelector('.warning-text');
+                if (warningDiv && !warningDiv.innerHTML.includes('已截止')) {
+                    warningDiv.innerHTML = '❌ 年报已于2026年6月30日截止！逾期企业请尽快补报并接受信用惩戒 ❌';
+                    warningDiv.style.background = '#f8d7da';
+                    warningDiv.style.color = '#a71d2a';
+                }
+                return;
+            }
+            
+            // 计算剩余天数 (向上取整或向下取整? 展示完整天数，让企业感受到紧迫)
+            const totalDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+            // 确保显示正整数
+            const displayDays = totalDays > 0 ? totalDays : 0;
+            countdownElement.innerHTML = displayDays;
+            
+            // 增加额外紧急性辅助提醒（少于30天，增加色调提醒）
+            const countdownArea = document.querySelector('.countdown-area');
+            if (displayDays <= 30) {
+                countdownArea.style.background = "linear-gradient(125deg, #ffece5, #fff0e8)";
+                countdownArea.style.border = "1px solid #e68a5e";
+                const numberEl = document.querySelector('.countdown-number');
+                if (numberEl) numberEl.style.color = "#d9534f";
+            } else {
+                countdownArea.style.background = "linear-gradient(125deg, #fff5e8, #fffbf2)";
+                const numberEl = document.querySelector('.countdown-number');
+                if (numberEl) numberEl.style.color = "#c0392b";
+            }
+            
+            // 如果最后一天加急文案
+            if (displayDays === 1) {
+                const deadlineInfo = document.querySelector('.deadline-info');
+                if (deadlineInfo) deadlineInfo.style.fontWeight = "bold";
+                const warnMsg = document.querySelector('.warning-text');
+                if (warnMsg && !warnMsg.innerHTML.includes('最后1天')) {
+                    warnMsg.innerHTML = '🚨 最后1天！错过今日年报将列入异常名录，请立即完成报送！ 🚨';
+                    warnMsg.style.background = "#ffd966";
+                }
+            } else if (displayDays <= 7 && displayDays > 1) {
+                const warnMsg = document.querySelector('.warning-text');
+                if (warnMsg && !warnMsg.innerHTML.includes('最后冲刺')) {
+                    warnMsg.innerHTML = `⚠️ 仅剩 ${displayDays} 天！年报倒计时最后冲刺，请尽快登录公示系统填报！ ⚠️`;
+                    warnMsg.style.background = "#ffe0b5";
+                }
+            } else {
+                // 如果超过7天恢复默认提醒（但不覆盖用户自定义提醒内容）
+                const warnMsg = document.querySelector('.warning-text');
+                if (warnMsg && !warnMsg.innerHTML.includes('逾期未报') && displayDays > 7 && displayDays <= 30) {
+                    warnMsg.innerHTML = "⚠️ 距离年报截止已不足30天！请尽早年报，避免网络拥堵及信用受损。";
+                } else if (warnMsg && displayDays > 30 && !warnMsg.innerHTML.includes('请尽早')) {
+                    warnMsg.innerHTML = "⏰ 年报时间：1月1日-6月30日，请尽早年报，积累企业信用。";
+                }
+            }
+        }
+        
+        // 初次调用
+        updateCountdown();
+        // 可选每日刷新，但因为天数变化跨天，设置每秒也没必要，改为每小时刷新一次以保证跨天准确
+        setInterval(() => {
+            updateCountdown();
+        }, 3600000); // 每小时更新，确保日期变更显示正确，同时避免过度计算
+        // 同时确保页面焦点回来时更新
+        window.addEventListener('focus', updateCountdown);
+        // 页面完全加载后再精确一次
+        window.addEventListener('load', updateCountdown);
+    })();
+</script>
+</body>
+</html>
